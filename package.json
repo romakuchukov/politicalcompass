@@ -1,0 +1,13 @@
+{
+  "name": "d3-custom-example",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "d3-selection": "^2.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
