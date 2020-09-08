@@ -6,10 +6,10 @@ export default [{
     if (warning.code === 'CIRCULAR_DEPENDENCY') return;
     warn(warning);
   },
-  input: 'index.js',
+  input: 'src/index.js',
   output: {
     format: 'umd',
-    file: 'd3.min.js',
+    file: 'dist/d3.min.js',
     name: 'd3'
   },
   plugins: [node(), terser()]
@@ -18,10 +18,10 @@ export default [{
     if (warning.code === 'CIRCULAR_DEPENDENCY') return;
     warn(warning);
   },
-  input: 'script.js',
+  input: 'src/script.js',
   output: {
     format: 'umd',
-    file: 'script.min.js'
+    file: 'dist/script.min.js'
   },
   plugins: [node(), terser()]
 }];
