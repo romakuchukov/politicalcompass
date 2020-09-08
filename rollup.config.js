@@ -2,6 +2,10 @@ import node from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 
 export default {
+  onwarn: function (warning, warn) {
+    if (warning.code === 'CIRCULAR_DEPENDENCY') return;
+    warn(warning);
+  },
   input: 'index.js',
   output: {
     format: 'umd',
