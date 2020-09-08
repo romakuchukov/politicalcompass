@@ -8,20 +8,17 @@ export default [{
   },
   input: 'src/index.js',
   output: {
+    name: 'd3',
+    dir: 'dist',
     format: 'umd',
-    file: 'dist/d3.min.js',
-    name: 'd3'
+    entryFileNames: 'd3.min.js'
   },
-  plugins: [node(), terser()]
+  plugins: [node()]
 }, {
-  onwarn: function (warning, warn) {
-    if (warning.code === 'CIRCULAR_DEPENDENCY') return;
-    warn(warning);
-  },
-  input: 'src/script.js',
+  input: 'src/custom.js',
   output: {
-    format: 'umd',
-    file: 'dist/script.min.js'
+    dir: 'dist',
+    entryFileNames: 'custom.min.js'
   },
   plugins: [node(), terser()]
 }];
