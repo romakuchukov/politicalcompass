@@ -15,7 +15,7 @@ export default [{
     format: 'umd',
     entryFileNames: 'd3.min.js'
   },
-  plugins: [node()]
+  plugins: [node(), terser()]
 }, {
   input: 'src/custom.js',
   output: {
