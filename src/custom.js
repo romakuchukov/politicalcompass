@@ -24,7 +24,7 @@ const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 const x = d3.scaleUtc().domain(d3.extent(data, d => new Date(d.date))).range([margin.left, width - margin.right]);
 const y = d3.scaleLinear().domain([0, d3.max(data, d => +d.value)]).nice().range([height - margin.bottom, margin.top])
 
-const callout = (g, value) => {
+const popup = (g, value) => {
   if (!value) return g.style('display', 'none');
 
   g.style('display', null).style('pointer-events', 'none').style('font', '10px sans-serif');
@@ -79,15 +79,20 @@ const yAxis = g => g
   .text('$ Close'))
 
 const svg = d3.select('body')
+    .append('div')
+    .classed('svg', true)
     .append('svg')
+    .attr('preserveAspectRatio', 'xMinYMin meet')
+    .attr('viewBox', '0 0 400 1000')
+    .classed('responsive', true)
     .style('-webkit-tap-highlight-color', 'transparent')
     .style('overflow', 'visible')
     .style('height', '100%')
     .style('width', '100%')
 
-svg.append('g').call(xAxis);
+svg.append('g').call(xAxis).style('width', '100%').style('height', '100%');
 
-svg.append('g').call(yAxis);
+svg.append('g').call(yAxis).style('width', '100%').style('height', '100%');
 
 svg.append('path')
     .datum(data)
@@ -102,9 +107,51 @@ const tooltip = svg.append('g');
 
 svg.on('touchmove mousemove', function (event) {
     const { date, value } = bisect(d3.pointer(event, this)[0]);
-    tooltip.attr('transform', `translate(${x(new Date(date))},${y(value)})`).call(callout, `${formatValue(value)} ${formatDate(new Date(date))}`);
+    tooltip.attr('transform', `translate(${x(new Date(date))},${y(value)})`).call(popup, `${formatValue(value)} ${formatDate(new Date(date))}`);
 });
 
-svg.on('touchend mouseleave', () => tooltip.call(callout, null));
+svg.on('touchend mouseleave', () => tooltip.call(popup, null));
 
 svg.node();
+
+
+// d3.select('body')
+//    .append('div')
+//    .classed('svg-container', true)
+//    .append('svg')
+//    .attr('preserveAspectRatio', 'xMinYMin meet')
+//    .attr('viewBox', '0 0 600 400')
+//    .classed('svg-content-responsive', true)
+  //  .append('rect')
+  //  .classed('rect', true)
+  //  .attr('width', 600)
+  //  .attr('height', 400);
+
+// d3.select(window).on('resize', resize);
+
+// function resize() {
+//   // update width
+//   // const width = window.innerWidth;
+
+//   // //console.log(width)
+//   // svg.attr('width', width)
+//   // svg.selectAll('g').attr('width', width);
+//   // svg.selectAll('path').attr('width', width);
+
+//   // chart.selectAll('rect.percent')
+//   //     .attr('width', function(d) { return x(d.percent); });
+
+//   // // update median ticks
+//   // var median = d3.median(chart.selectAll('.bar').data(),
+//   //     function(d) { return d.percent; });
+
+//   // chart.selectAll('line.median')
+//   //     .attr('x1', x(median))
+//   //     .attr('x2', x(median));
+
+
+//   // // update axes
+//   // chart.select('.x.axis.top').call(xAxis.orient('top'));
+//   // chart.select('.x.axis.bottom').call(xAxis.orient('bottom'));
+
+// }
