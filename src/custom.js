@@ -1,9 +1,6 @@
 import data from './data'
-
-// d3.csv('./aapl.csv').then(data => {
-
-
-// });
+//https://stackoverflow.com/questions/16265123/resize-svg-when-window-is-resized-in-d3-js
+// d3.csv('./aapl.csv').then(data => {});
 
 function formatValue(value) {
   return value.toLocaleString('en', {
@@ -55,22 +52,8 @@ const callout = (g, value) => {
   text.attr('transform', `translate(${-w / 2},${15 - y})`);
   path.attr('d', `M${-w / 2 - 10},5H-5l5,-5l5,5H${w / 2 + 10}v${h + 20}h-${w + 20}z`);
 }
-const xAxis = g => g
-    .attr('transform', `translate(0,${height - margin.bottom})`)
-    .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
 
-const yAxis = g => g
-    .attr('transform', `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y))
-    .call(g => g.select('.domain').remove())
-    .call(g => g.select('.tick:last-of-type text')
-    .clone()
-    .attr('x', 3)
-    .attr('text-anchor', 'start')
-    .attr('font-weight', 'bold')
-    .text('$ Close'))
-
-const line = d3.line().curve(d3.curveStep).defined(d => !isNaN(d.value)).x(d => x(new Date(d.date))).y(d => y(d.value));
+const line = d3.line().curve(d3.curveStep).defined(d => !isNaN(+d.value)).x(d => x(new Date(d.date))).y(d => y(+d.value));
 
 const bisect = mx => {
   const date = x.invert(mx);
@@ -80,38 +63,48 @@ const bisect = mx => {
   return b && (date - new Date(a.date) > new Date(b.date) - date) ? b : a;
 }
 
-function chart (d3, width, height, xAxis, yAxis, data, line, bisect, x, y, callout, formatValue, formatDate) {
+const xAxis = g => g
+  .attr('transform', `translate(0,${height - margin.bottom})`)
+  .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
 
-  const svg = d3.select('body')
-      .append('svg')
-      .style('-webkit-tap-highlight-color', 'transparent')
-      .style('overflow', 'visible')
-      .style('height', '100%')
-      .style('width', '100%')
+const yAxis = g => g
+  .attr('transform', `translate(${margin.left},0)`)
+  .call(d3.axisLeft(y))
+  .call(g => g.select('.domain').remove())
+  .call(g => g.select('.tick:last-of-type text')
+  .clone()
+  .attr('x', 3)
+  .attr('text-anchor', 'start')
+  .attr('font-weight', 'bold')
+  .text('$ Close'))
 
-  svg.append('g').call(xAxis);
+const svg = d3.select('body')
+    .append('svg')
+    .style('-webkit-tap-highlight-color', 'transparent')
+    .style('overflow', 'visible')
+    .style('height', '100%')
+    .style('width', '100%')
 
-  svg.append('g').call(yAxis);
+svg.append('g').call(xAxis);
 
-  svg.append('path')
-      .datum(data)
-      .attr('fill', 'none')
-      .attr('stroke', 'steelblue')
-      .attr('stroke-width', 1.5)
-      .attr('stroke-linejoin', 'round')
-      .attr('stroke-linecap', 'round')
-      .attr('d', line);
+svg.append('g').call(yAxis);
 
-  const tooltip = svg.append('g');
+svg.append('path')
+    .datum(data)
+    .attr('fill', 'none')
+    .attr('stroke', 'steelblue')
+    .attr('stroke-width', 1.5)
+    .attr('stroke-linejoin', 'round')
+    .attr('stroke-linecap', 'round')
+    .attr('d', line);
 
-  svg.on('touchmove mousemove', function (event) {
-      const { date, value } = bisect(d3.pointer(event, this)[0]);
-      tooltip.attr('transform', `translate(${x(new Date(date))},${y(value)})`).call(callout, `${formatValue(value)} ${formatDate(new Date(date))}`);
-  });
+const tooltip = svg.append('g');
 
-  svg.on('touchend mouseleave', () => tooltip.call(callout, null));
+svg.on('touchmove mousemove', function (event) {
+    const { date, value } = bisect(d3.pointer(event, this)[0]);
+    tooltip.attr('transform', `translate(${x(new Date(date))},${y(value)})`).call(callout, `${formatValue(value)} ${formatDate(new Date(date))}`);
+});
 
-  return svg.node();
-}
+svg.on('touchend mouseleave', () => tooltip.call(callout, null));
 
-chart(d3, width, height, xAxis, yAxis, data, line, bisect, x, y, callout, formatValue, formatDate);
+svg.node();
