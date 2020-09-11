@@ -5,7 +5,7 @@ import data from './data'
 // d3.csv('./aapl.csv').then(data => {});
 
 function formatValue(value) {
-  return value.toLocaleString('en', {
+  return (+value).toLocaleString('en', {
       style: 'currency',
       currency: 'USD'
   });
@@ -42,7 +42,7 @@ const popup = (g, value) => {
       .join('text')
       .call(text => text
           .selectAll('tspan')
-          .data((value + '').split(/\n/))
+          .data(value.trim().split(/\s(.+)/).filter(el => !!el))
           .join('tspan')
           .attr('x', 0)
           .attr('y', (d, i) => `${i * 1.1}em`)
