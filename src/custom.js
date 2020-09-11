@@ -105,11 +105,9 @@ svg.append('path')
 
 const tooltip = svg.append('g');
 
-svg.on('touchmove mousemove', function (event) {
-    const { date, value } = bisect(d3.pointer(event, this)[0]);
-    tooltip.attr('transform', `translate(${x(new Date(date))},${y(value)})`).call(popup, `${formatValue(value)} ${formatDate(new Date(date))}`);
+svg.on('touchmove mousemove', event => {
+  const { date, value } = bisect(d3.pointer(event, event.currentTarget)[0]);
+  tooltip.attr('transform', `translate(${x(new Date(date))},${y(value)})`).call(popup, `${formatValue(value)} ${formatDate(new Date(date))}`);
 });
-
-svg.on('touchend mouseleave', () => tooltip.call(popup, null));
 
 svg.node();
