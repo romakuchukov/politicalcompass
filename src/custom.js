@@ -4,14 +4,14 @@ import data from './data'
 // https://developers.google.com/chart/interactive/docs/gallery/linechart
 // d3.csv('./aapl.csv').then(data => {});
 
-function formatValue(value) {
+const formatValue = (value) => {
   return (+value).toLocaleString('en', {
       style: 'currency',
       currency: 'USD'
   });
 }
 
-function formatDate(date) {
+const formatDate = (date) => {
   return date.toLocaleString('en', {
       month: 'short',
       day: 'numeric',
