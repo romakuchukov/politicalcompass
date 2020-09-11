@@ -1,5 +1,7 @@
 import data from './data'
 //https://stackoverflow.com/questions/16265123/resize-svg-when-window-is-resized-in-d3-js
+// https://www.d3-graph-gallery.com/graph/line_basic.html
+// https://developers.google.com/chart/interactive/docs/gallery/linechart
 // d3.csv('./aapl.csv').then(data => {});
 
 function formatValue(value) {
