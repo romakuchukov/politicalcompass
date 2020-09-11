@@ -3,4 +3,4 @@ node_modules/
 dist/
 *.csv
 *.min.js
-yarn.lock
+yarn*
