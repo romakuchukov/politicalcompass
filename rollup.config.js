@@ -1,26 +1,31 @@
 import node from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
+import browsersync from 'rollup-plugin-browsersync'
 
+const src = 'src/';
+const dist = 'dist';
+const plugins = [node(), terser(), browsersync()];
 const onwarn = (warning, warn) => {
   if (warning.code === 'CIRCULAR_DEPENDENCY') return;
   warn(warning);
 };
 
+
 export default [{
   onwarn: onwarn,
-  input: 'src/index.js',
+  input: `${src}index.js`,
   output: {
     name: 'd3',
-    dir: 'dist',
+    dir: dist,
     format: 'umd',
     entryFileNames: 'd3.min.js'
   },
-  plugins: [node(), terser()]
+  plugins: plugins
 }, {
-  input: 'src/custom.js',
+  input: `${src}custom.js`,
   output: {
-    dir: 'dist',
+    dir: dist,
     entryFileNames: 'custom.min.js'
   },
-  plugins: [node(), terser()]
+  plugins: plugins
 }];
