@@ -1,15 +1,17 @@
+import babel from 'rollup-plugin-babel';
 import node from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import browsersync from 'rollup-plugin-browsersync'
 
 const src = 'src/';
 const dist = 'dist';
-const plugins = [node(), terser(), browsersync()];
+
+const plugins = [node(), babel(), terser(), browsersync()];
+
 const onwarn = (warning, warn) => {
   if (warning.code === 'CIRCULAR_DEPENDENCY') return;
   warn(warning);
 };
-
 
 export default [{
   onwarn: onwarn,
