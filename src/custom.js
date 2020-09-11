@@ -83,16 +83,16 @@ const svg = d3.select('body')
     .classed('svg', true)
     .append('svg')
     .attr('preserveAspectRatio', 'xMinYMin meet')
-    .attr('viewBox', '0 0 400 1000')
+    .attr('viewBox', '0 0 400 740')
     .classed('responsive', true)
     .style('-webkit-tap-highlight-color', 'transparent')
     .style('overflow', 'visible')
-    .style('height', '100%')
+    .style('height', '150%')
     .style('width', '100%')
 
-svg.append('g').call(xAxis).style('width', '100%').style('height', '100%');
+svg.append('g').call(xAxis);
 
-svg.append('g').call(yAxis).style('width', '100%').style('height', '100%');
+svg.append('g').call(yAxis);
 
 svg.append('path')
     .datum(data)
