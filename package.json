@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
+    "scss": "sass --watch style.scss:dist/style.css",
     "build": "rollup -c",
-    "watch": "rollup -c -w",
+    "watch": "rollup -c --environment DEV",
     "php": "php -S localhost:8000",
-    "dev": "yarn run watch & yarn run php"
+    "dev": "yarn run scss & yarn run watch"
   },
   "dependencies": {
     "d3-array": "^2.7.1",

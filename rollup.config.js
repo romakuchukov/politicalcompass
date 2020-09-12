@@ -5,8 +5,9 @@ import browsersync from 'rollup-plugin-browsersync'
 
 const src = 'src/';
 const dist = 'dist';
+const env = process.env.DEV ? browsersync : terser;
 
-const plugins = [node(), babel(), terser(), browsersync()];
+const plugins = [node(), babel(), env()];
 
 const onwarn = (warning, warn) => {
   if (warning.code === 'CIRCULAR_DEPENDENCY') return;
