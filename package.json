@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "scss": "sass --watch style.scss:dist/style.css",
-    "build": "rollup -c",
-    "watch": "rollup -c --environment DEV -w",
+    "build": "rollup -c rollup.prod.config.js",
+    "watch": "rollup -c rollup.dev.config.js -w",
     "php": "php -S localhost:8000",
     "dev": "yarn run scss & yarn run watch"
   },

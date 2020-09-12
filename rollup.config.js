@@ -1,13 +1,10 @@
 import babel from 'rollup-plugin-babel';
 import node from 'rollup-plugin-node-resolve';
-import { terser } from 'rollup-plugin-terser';
-import browsersync from 'rollup-plugin-browsersync'
 
 const src = 'src/';
 const dist = 'dist';
-const env = process.env.DEV ? browsersync : terser;
 
-const plugins = [node(), babel(), env()];
+const plugins = [node(), babel()];
 
 const onwarn = (warning, warn) => {
   if (warning.code === 'CIRCULAR_DEPENDENCY') return;
@@ -23,12 +20,12 @@ export default [{
     format: 'umd',
     entryFileNames: 'd3.min.js'
   },
-  plugins: plugins
+  plugins
 }, {
   input: `${src}custom.js`,
   output: {
     dir: dist,
     entryFileNames: 'custom.min.js'
   },
-  plugins: plugins
+  plugins
 }];
