@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.svg {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50%;
+  overflow: hidden;
+  .responsive { position: absolute; }
+}
