@@ -5,9 +5,10 @@
   "scripts": {
     "scss": "sass --watch style.scss:dist/style.css",
     "build": "rollup -c rollup.prod.config.js",
-    "watch": "rollup -c rollup.dev.config.js -w",
+    "watch": "rollup -c -w",
+    "sync": "browser-sync --serveStatic . --files dist -w",
     "php": "php -S localhost:8000",
-    "dev": "yarn run scss & yarn run watch"
+    "dev": "yarn run scss & yarn run watch & yarn run sync"
   },
   "dependencies": {
     "d3-array": "^2.7.1",
@@ -23,7 +24,6 @@
     "@babel/plugin-transform-arrow-functions": "^7.10.4",
     "@babel/preset-env": "^7.11.5",
     "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-browsersync": "^1.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-watch": "^4.3.1"
