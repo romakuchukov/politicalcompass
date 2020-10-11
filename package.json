@@ -1,5 +1,5 @@
 {
-  "name": "d3-custom-example",
+  "name": "d3-political-compass",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
@@ -11,13 +11,7 @@
     "dev": "yarn run scss & yarn run watch & yarn run sync"
   },
   "dependencies": {
-    "d3-array": "^2.7.1",
-    "d3-axis": "^2.0.0",
-    "d3-dsv": "^2.0.0",
-    "d3-fetch": "^2.0.0",
-    "d3-scale": "^3.2.2",
-    "d3-selection": "^2.0.0",
-    "d3-shape": "^2.0.0"
+    "d3-selection": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
