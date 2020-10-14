@@ -17,11 +17,11 @@ img { z-index: 0; }
 svg {
   z-index: 1;
   pointer-events: none;
-  width: 100%;
-  height: 100%;
   &.mark{
-    width: 20px;
-    height: 20px;
+      width: 100%;
+  height: 100%;
+    // width: 20px;
+    // height: 20px;
     margin: 0;
     padding: 0;
   }

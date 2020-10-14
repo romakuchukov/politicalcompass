@@ -78,14 +78,30 @@ const radius = 5;
 //   e.stopPropagation();
 // });
 
+//document.body.addEventListener
 
-document.body.addEventListener('click', function(e) {
-  d3.select('svg').remove()
+
+d3.select('img').on('click', function(e) {
   const mark = content.append('svg')
-  .attr('preserveAspectRatio', 'xMinYMin meet')
-  //.append('g')
-  .attr('transform', `translate(${e.x}, ${e.y})`)
-  .attr('viewBox', `0 0 30 30`)
+  const defs = mark.append('svg:defs');
+
+defs.append("svg:pattern")
+    .attr("id", "grump_avatar")
+    .attr("width", 480)
+    .attr("height", 480)
+    .attr("patternUnits", "userSpaceOnUse")
+    .append("svg:image")
+    .attr("xlink:href", `data:image/svg+xml;base64,${btoa(svgStr)}`)
+    .attr("width", 480)
+    .attr("height", 480)
+    .attr("x", 0)
+    .attr("y", 0);
+
+  d3.select('svg').remove()
+
+  //.attr('preserveAspectRatio', 'xMinYMin meet')
+  // //.append('g')
+  // .attr('viewBox', `0 0 512 512`)
   .classed('mark', true)
   const [cx, cy] = d3.pointer(e);
   //const {width, height} = d3.select('img').node().getBoundingClientRect()
@@ -95,9 +111,18 @@ document.body.addEventListener('click', function(e) {
   //mark.remove()
 
   mark
+  .attr('preserveAspectRatio', 'xMinYMin meet')
+  .attr('viewBox', `0 0 512 512`)
+  //.style('fill', `url(data:image/svg+xml;base64,${btoa(svgStr)})`)
+
   .append('circle')
-  .attr('r', radius)
+  .attr('r', radius+40)
   .attr('fill', 'red')
+  .attr('transform', `translate(${e.x}, ${e.y})`)
+mark.append('rect')
+  .attr('width', width)
+  .attr('height', height)
+  .style("fill", "url(#grump_avatar)")
   // .attr('cx', e.x)
   // .attr('cy', 0)
 }, null)
@@ -131,3 +156,6 @@ document.body.addEventListener('click', function(e) {
 // screenY: 880
 // x: 900
 // y: 445
+
+
+
