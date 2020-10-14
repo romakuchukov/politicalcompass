@@ -80,11 +80,11 @@ const radius = 5;
 
 
 document.body.addEventListener('click', function(e) {
-
+  d3.select('svg').remove()
   const mark = content.append('svg')
   .attr('preserveAspectRatio', 'xMinYMin meet')
   //.append('g')
-  .attr('transform', `translate(${e.x}, ${e.y-30})`)
+  .attr('transform', `translate(${e.x}, ${e.y})`)
   .attr('viewBox', `0 0 30 30`)
   .classed('mark', true)
   const [cx, cy] = d3.pointer(e);
