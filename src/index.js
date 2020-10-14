@@ -4,4 +4,4 @@ import 'regenerator-runtime/runtime';
 // export { axisBottom, axisLeft } from 'd3-axis';
 // export { extent, max, bisector } from 'd3-array';
 // export { scaleUtc, scaleLinear } from 'd3-scale';
-export { select, pointer } from 'd3-selection';
+export { select, selectAll, pointer } from 'd3-selection';

@@ -12,55 +12,52 @@ const svg = content.append('svg')
 svg.append('rect')
   .attr('width', 512)
   .attr('height', 512)
-  .attr('fill', '#444');
+  .attr('fill', '#444')
+  .classed('bg', true)
 
-svg.append('rect')
-  .attr('width', 250)
-  .attr('height', 250)
-  .attr('fill', '#FF7575')
-  .attr('x', 0)
-  .attr('y', 0);
+// svg.append('rect')
+//   .attr('width', 250)
+//   .attr('height', 250)
+//   .attr('fill', '#FF7575')
+//   .attr('x', 0)
+//   .attr('y', 0);
 
-svg.append('rect')
-  .attr('width', 250)
-  .attr('height', 250)
-  .attr('fill', '#9AED97')
-  .attr('x', 0)
-  .attr('y', 262);
+// svg.append('rect')
+//   .attr('width', 250)
+//   .attr('height', 250)
+//   .attr('fill', '#9AED97')
+//   .attr('x', 0)
+//   .attr('y', 262);
 
-svg.append('rect')
-  .attr('width', 250)
-  .attr('height', 250)
-  .attr('fill', '#42AAFF')
-  .attr('x', 262)
-  .attr('y', 0);
+// svg.append('rect')
+//   .attr('width', 250)
+//   .attr('height', 250)
+//   .attr('fill', '#42AAFF')
+//   .attr('x', 262)
+//   .attr('y', 0);
 
-svg.append('rect')
-  .attr('width', 250)
-  .attr('height', 250)
-  .attr('fill', '#C09AEA')
-  .attr('x', 262)
-  .attr('y', 262);
+// svg.append('rect')
+//   .attr('width', 250)
+//   .attr('height', 250)
+//   .attr('fill', '#C09AEA')
+//   .attr('x', 262)
+//   .attr('y', 262);
 
-const img = document.createElement('img');
-const svgStr = new XMLSerializer().serializeToString(content.select('svg').node());
+// const img = document.createElement('img');
+// const svgStr = new XMLSerializer().serializeToString(content.select('svg').node());
 
-img.src = (`data:image/svg+xml;base64,${btoa(svgStr)}`);
-document.body.append(img);
+// img.src = (`data:image/svg+xml;base64,${btoa(svgStr)}`);
+// document.body.append(img);
 
 // const content = d3.select('body')
 
   //.attr('preserveAspectRatio', 'xMinYMin meet')
-
-const radius = 5;
 
 // d3.select('img').on('click', function(e) {
 //   const [cx, cy] = d3.pointer(e);
 //   const {width, height} = d3.select('img').node().getBoundingClientRect()
 //   //e.clientX, e.clientY
 //   console.log(e);
-
-//   mark.selectAll('circle').remove()
 
 //   mark
 //   .append('circle')
@@ -80,52 +77,56 @@ const radius = 5;
 
 //document.body.addEventListener
 
+// svg.on('click', function(e) {
+//   console.log('logging');
+//   // const mark = content.append('svg');
 
-d3.select('img').on('click', function(e) {
-  const mark = content.append('svg')
-  const defs = mark.append('svg:defs');
+//   d3.select('circle').remove();
 
-defs.append("svg:pattern")
-    .attr("id", "grump_avatar")
-    .attr("width", 480)
-    .attr("height", 480)
-    .attr("patternUnits", "userSpaceOnUse")
-    .append("svg:image")
-    .attr("xlink:href", `data:image/svg+xml;base64,${btoa(svgStr)}`)
-    .attr("width", 480)
-    .attr("height", 480)
-    .attr("x", 0)
-    .attr("y", 0);
+//   // const [cx, cy] = d3.pointer(e);
+//   //const {width, height} = d3.select('img').node().getBoundingClientRect()
+//   //e.clientX, e.clientY
+//   //mark.remove()
 
-  d3.select('svg').remove()
+//   svg
+//   .attr('viewBox', `0 0 100 100`)
+//   .attr('preserveAspectRatio', 'xMinYMin meet')
+//   .classed('mark', true)
+//   .attr('width', '100%')
+//   .attr('height', '100%')
 
-  //.attr('preserveAspectRatio', 'xMinYMin meet')
-  // //.append('g')
-  // .attr('viewBox', `0 0 512 512`)
-  .classed('mark', true)
-  const [cx, cy] = d3.pointer(e);
-  //const {width, height} = d3.select('img').node().getBoundingClientRect()
-  //e.clientX, e.clientY
+//   //.style('fill', `url(data:image/svg+xml;base64,${btoa(svgStr)})`)
+
+//   .append('circle')
+//   .attr('r', radius)
+//   .attr('fill', 'red')
+//   .attr('transform', `translate(${e.x}, 10)`)
+
+//   // .attr('cx', e.x)
+//   // .attr('cy', 0)
+// }, null)
+
+d3.select('svg').on('click', function(e) {
+  d3.select('circle').remove();
+  const { x, y } = e;
+  const node = d3.select('svg').node();
+  const { width, height } = node.getBoundingClientRect();
+  console.log(node.getBoundingClientRect());
+  //console.log(node.getBBox()); {x: 0, y: 0, width: 512, height: 512}
+  const ratio = (1280/512);
+
+
+
   console.log(e);
+  //console.log(node.getBoundingClientRect());
 
-  //mark.remove()
-
-  mark
-  .attr('preserveAspectRatio', 'xMinYMin meet')
-  .attr('viewBox', `0 0 512 512`)
-  //.style('fill', `url(data:image/svg+xml;base64,${btoa(svgStr)})`)
-
-  .append('circle')
-  .attr('r', radius+40)
+  // layerX: 2
+  // layerY: 31
+  svg.append('circle')
+  .attr('r', 5)
   .attr('fill', 'red')
-  .attr('transform', `translate(${e.x}, ${e.y})`)
-mark.append('rect')
-  .attr('width', width)
-  .attr('height', height)
-  .style("fill", "url(#grump_avatar)")
-  // .attr('cx', e.x)
-  // .attr('cy', 0)
-}, null)
+  .attr('transform', `translate(${e.x/ratio}, ${e.y/ratio})`)
+});
 
 // clientX: 487
 // clientY: 31

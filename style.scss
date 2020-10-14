@@ -16,7 +16,7 @@ body {
 img { z-index: 0; }
 svg {
   z-index: 1;
-  pointer-events: none;
+  pointer-events: visible;
   &.mark{
       width: 100%;
   height: 100%;
@@ -26,7 +26,9 @@ svg {
     padding: 0;
   }
 }
-
+g {
+  pointer-events: none;
+}
 img,
 svg {
   display: block;
@@ -43,5 +45,5 @@ svg {
   overflow: visible;
 }
 svg.hidden {
-  display: none;
+  //display: none;
 }
