@@ -26,31 +26,31 @@ svg {
 }
 
 div {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+  // max-width: 1200px;
+  // margin: 0 auto;
+  // width: 100%;
 }
 // g {
 //   pointer-events: none;
 // }
 img,
 svg {
-  // display: block;
-  // margin: 0 auto;
-  // height: 100%;
-  // padding: 30px 0;
-  // box-sizing: border-box;
-
-  // top:0;
-  // left: 0;
-  // right: 0;
-  // bottom: 0;
-  // position: absolute;
-  // overflow: visible;
-
   display: block;
   margin: 0 auto;
   height: 100%;
   padding: 0;
-  width: 100%;
+  box-sizing: border-box;
+
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  overflow: visible;
+
+  // display: block;
+  // margin: 0 auto;
+  // height: 100%;
+  // padding: 0;
+  // width: 100%;
 }
