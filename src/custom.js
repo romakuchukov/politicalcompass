@@ -1,47 +1,47 @@
-const height = 512;
-const width  = 512;
+const svgHeight = 512;
+const svgWidth  = 512;
 
 const content = d3.select('body')
 
-const svg = content.append('svg')
-  .classed('hidden', true)
+const svg = content.append('div')
+  .append('svg')
   .attr('preserveAspectRatio', 'xMinYMin meet')
-  .attr('viewBox', `0 0 ${width} ${height}`)
+  .attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`)
   .append('g');
 
 svg.append('rect')
-  .attr('width', 512)
-  .attr('height', 512)
+  .attr('width', svgWidth)
+  .attr('height', svgHeight)
   .attr('fill', '#444')
   .classed('bg', true)
 
-// svg.append('rect')
-//   .attr('width', 250)
-//   .attr('height', 250)
-//   .attr('fill', '#FF7575')
-//   .attr('x', 0)
-//   .attr('y', 0);
+svg.append('rect')
+  .attr('width', svgWidth/2)
+  .attr('height', svgHeight/2)
+  .attr('fill', '#FF7575')
+  .attr('x', 0)
+  .attr('y', 0);
 
-// svg.append('rect')
-//   .attr('width', 250)
-//   .attr('height', 250)
-//   .attr('fill', '#9AED97')
-//   .attr('x', 0)
-//   .attr('y', 262);
+svg.append('rect')
+  .attr('width', svgWidth/2)
+  .attr('height', svgHeight/2)
+  .attr('fill', '#9AED97')
+  .attr('x', 0)
+  .attr('y', 262);
 
-// svg.append('rect')
-//   .attr('width', 250)
-//   .attr('height', 250)
-//   .attr('fill', '#42AAFF')
-//   .attr('x', 262)
-//   .attr('y', 0);
+svg.append('rect')
+  .attr('width', svgWidth/2)
+  .attr('height', svgHeight/2)
+  .attr('fill', '#42AAFF')
+  .attr('x', 262)
+  .attr('y', 0);
 
-// svg.append('rect')
-//   .attr('width', 250)
-//   .attr('height', 250)
-//   .attr('fill', '#C09AEA')
-//   .attr('x', 262)
-//   .attr('y', 262);
+svg.append('rect')
+  .attr('width', svgWidth/2)
+  .attr('height', svgHeight/2)
+  .attr('fill', '#C09AEA')
+  .attr('x', 262)
+  .attr('y', 262);
 
 // const img = document.createElement('img');
 // const svgStr = new XMLSerializer().serializeToString(content.select('svg').node());
@@ -107,25 +107,21 @@ svg.append('rect')
 // }, null)
 
 d3.select('svg').on('click', function(e) {
+
   d3.select('circle').remove();
-  const { x, y } = e;
+
   const node = d3.select('svg').node();
-  const { width, height } = node.getBoundingClientRect();
-  console.log(node.getBoundingClientRect());
-  //console.log(node.getBBox()); {x: 0, y: 0, width: 512, height: 512}
-  const ratio = (1280/512);
 
+  const { width, height, x, y } = node.getBoundingClientRect();
 
+  const ratio = (width/svgWidth);
 
-  console.log(e);
-  //console.log(node.getBoundingClientRect());
-
-  // layerX: 2
-  // layerY: 31
   svg.append('circle')
-  .attr('r', 5)
-  .attr('fill', 'red')
-  .attr('transform', `translate(${e.x/ratio}, ${e.y/ratio})`)
+    .attr('r', 10)
+    .attr('fill', 'red')
+    .attr('stroke', '#000')
+    .attr('stroke-width', .2)
+    .attr('transform', `translate(${e.x/ratio - x/ratio}, ${e.y/ratio})`)
 });
 
 // clientX: 487
