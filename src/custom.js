@@ -1,5 +1,5 @@
-const svgHeight = 512;
-const svgWidth  = 512;
+const svgHeight = 100;
+const svgWidth  = 100;
 
 const content = d3.select('body')
 
@@ -9,9 +9,9 @@ const svg = content.append('div')
   .attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`)
   .append('g');
 
-const rectW = svgWidth/2-6;
-const rectH = svgHeight/2-6;
-const outerPos = svgWidth/2+6
+const rectW = svgWidth/2-.5;
+const rectH = svgHeight/2-.5;
+const outerPos = svgWidth/2+.5;
 
 
 svg.append('rect')
@@ -59,9 +59,9 @@ d3.select('svg').on('click', e => {
   const ratio = (width/svgWidth);
 
   svg.append('circle')
-    .attr('r', 10)
+    .attr('r', 2)
     .attr('fill', 'red')
-    .attr('stroke', '#000')
-    .attr('stroke-width', .2)
+    .attr('stroke', '#532670')
+    .attr('stroke-width', .1)
     .attr('transform', `translate(${e.x/ratio - x/ratio}, ${e.y/ratio - y/ratio})`)
 });
