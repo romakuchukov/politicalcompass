@@ -9,8 +9,9 @@ const svg = content.append('div')
   .attr('viewBox', `0 0 ${svgWidth} ${svgHeight}`)
   .append('g');
 
-  const rectW = svgWidth/2-6;
-  const rectH = svgHeight/2-6;
+const rectW = svgWidth/2-6;
+const rectH = svgHeight/2-6;
+const outerPos = svgWidth/2+6
 
 
 svg.append('rect')
@@ -31,23 +32,23 @@ svg.append('rect')
   .attr('height', rectH)
   .attr('fill', '#9AED97')
   .attr('x', 0)
-  .attr('y', 262);
+  .attr('y', outerPos);
 
 svg.append('rect')
   .attr('width', rectW)
   .attr('height', rectH)
   .attr('fill', '#42AAFF')
-  .attr('x', 262)
+  .attr('x', outerPos)
   .attr('y', 0);
 
 svg.append('rect')
   .attr('width', rectW)
   .attr('height', rectH)
   .attr('fill', '#C09AEA')
-  .attr('x', 262)
-  .attr('y', 262);
+  .attr('x', outerPos)
+  .attr('y', outerPos);
 
-d3.select('svg').on('click', function(e) {
+d3.select('svg').on('click', e => {
 
   d3.select('circle').remove();
 
