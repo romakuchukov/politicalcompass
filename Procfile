@@ -1,2 +1,2 @@
-web: node server.js 80
+web: node server.js
 build: npm run build
