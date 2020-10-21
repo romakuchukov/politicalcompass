@@ -1,1 +1,1 @@
-web: npm run bild
+web: npm run build
