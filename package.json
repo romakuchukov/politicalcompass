@@ -10,6 +10,7 @@
     "php": "php -S localhost:8000",
     "dev": "yarn run scss & yarn run watch & yarn run sync"
   },
+  "heroku-postbuild": "rollup -c prod.rollup.config.js",
   "dependencies": {
     "d3-selection": "^2.0.0"
   },
