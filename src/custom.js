@@ -51,9 +51,7 @@ d3.select('svg').on('click', e => {
 
   d3.select('circle').remove();
 
-  const node = d3.select('svg').node();
-
-  const { width, height, x, y } = node.getBoundingClientRect();
+  const { width, height, x, y } = d3.select('svg').node().getBoundingClientRect();
 
   const ratio = (width/svgWidth);
 

@@ -17,6 +17,10 @@ body {
 div {
   max-width: 1200px;
   margin: auto;
+  padding: 30px;
 }
 
-svg { display: block; }
+svg {
+  display: block;
+  overflow: visible;
+}
