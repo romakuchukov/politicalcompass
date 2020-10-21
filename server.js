@@ -6,8 +6,9 @@ var http = require('http'),
 
 http.createServer(function(request, response) {
 
-  var uri = url.parse(request.url).pathname
-    , filename = path.join(process.cwd(), uri);
+  var uri = url.parse(request.url).pathname;
+  var filename = path.join(process.cwd(), uri);
+  var extension = uri.substring(uri.lastIndexOf('.') + 1);
 
   fs.exists(filename, function(exists) {
     if(!exists) {
@@ -27,7 +28,12 @@ http.createServer(function(request, response) {
         return;
       }
 
-      response.writeHead(200);
+      if(extension === 'css') {
+        response.writeHead(200, {'Content-Type': 'text/css'});
+      } else {
+        response.writeHead(200);
+      }
+
       response.write(file, 'binary');
       response.end();
     });
