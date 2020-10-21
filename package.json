@@ -9,7 +9,7 @@
   "scripts": {
     "start": "rollup -c prod.rollup.config.js",
     "scss": "sass --watch style.scss:dist/style.css",
-    "build": "node-sass --output-style compressed style.scss > dist/style.css & rollup -c prod.rollup.config.js",
+    "build": "rollup -c prod.rollup.config.js & node-sass --output-style compressed style.scss > dist/style.css",
     "watch": "rollup -c -w",
     "sync": "browser-sync --serveStatic . --files dist -w",
     "php": "php -S localhost:8000",
