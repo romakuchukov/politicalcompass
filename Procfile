@@ -1,1 +1,1 @@
-web: yarn install
+web: npm run bild
