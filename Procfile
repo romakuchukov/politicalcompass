@@ -1,1 +1,1 @@
-web: npm install -dev rollup
+web: npm run build
