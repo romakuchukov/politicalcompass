@@ -10,12 +10,10 @@
     "sync": "browser-sync --serveStatic . --files dist -w",
     "php": "php -S localhost:8000",
     "dev": "yarn run scss & yarn run watch & yarn run sync",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false rollup -c prod.rollup.config.js"
+    "heroku-postbuild": "rollup -c prod.rollup.config.js"
   },
   "dependencies": {
-    "d3-selection": "^2.0.0"
-  },
-  "devDependencies": {
+    "d3-selection": "^2.0.0",
     "@babel/core": "^7.11.6",
     "@babel/plugin-transform-arrow-functions": "^7.10.4",
     "@babel/preset-env": "^7.11.5",
@@ -23,5 +21,8 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-watch": "^4.3.1"
+  },
+  "devDependencies": {
+
   }
 }
