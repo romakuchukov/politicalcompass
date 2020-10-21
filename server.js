@@ -1,25 +1,37 @@
-//server.js
-const express = require('express');
-const favicon = require('express-favicon');
-const path = require('path');
-const port = process.env.PORT || 8080;
-const app = express();
+var http = require('http'),
+    url = require('url'),
+    path = require('path'),
+    fs = require('fs'),
+    port = process.argv[2] || 8888;
 
-if(process.env.NODE_ENV === 'production') {
-  app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https')
-      res.redirect(`https://${req.header('host')}${req.url}`)
-    else
-      next()
-  })
-}
+http.createServer(function(request, response) {
 
-app.use(favicon(__dirname + '/favicon.ico'));
-// the __dirname is the current directory from where the script is running
-app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname)));
+  var uri = url.parse(request.url).pathname
+    , filename = path.join(process.cwd(), uri);
 
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-app.listen(port);
+  fs.exists(filename, function(exists) {
+    if(!exists) {
+      response.writeHead(404, {'Content-Type': 'text/plain'});
+      response.write('404 Not Found\n');
+      response.end();
+      return;
+    }
+
+    if (fs.statSync(filename).isDirectory()) filename += '/index.html';
+
+    fs.readFile(filename, 'binary', function(err, file) {
+      if(err) {
+        response.writeHead(500, {'Content-Type': 'text/plain'});
+        response.write(err + '\n');
+        response.end();
+        return;
+      }
+
+      response.writeHead(200);
+      response.write(file, 'binary');
+      response.end();
+    });
+  });
+}).listen(parseInt(port, 10));
+
+console.log('Static file server running at\n  => http://localhost:' + port + '/\nCTRL + C to shutdown');
