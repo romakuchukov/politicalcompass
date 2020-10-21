@@ -13,7 +13,8 @@
     "watch": "rollup -c -w",
     "sync": "browser-sync --serveStatic . --files dist -w",
     "php": "php -S localhost:8000",
-    "dev": "yarn run scss & yarn run watch & yarn run sync"
+    "dev": "yarn run scss & yarn run watch & yarn run sync",
+    "heroku-postbuild": "gem install sass"
   },
   "dependencies": {
     "d3-selection": "^2.0.0"
