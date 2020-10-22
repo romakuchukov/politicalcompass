@@ -29,7 +29,8 @@ div {
     &.active {
       height:auto;
       padding: 30px;
-      padding-bottom: 0;
+      background: #deeaff;
+      box-sizing: border-box;
     }
   }
 
@@ -41,22 +42,34 @@ svg {
 }
 
 p {
-  font-family: BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
   color: #007bff;
   font-weight: 500;
   line-height: 1em;
   font-size: 2rem;
   margin-bottom: 10px;
+  font-style: italic;
+  font-family: BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
   &:last-of-type { margin:0; }
   b { font-weight: bolder; }
 }
 
 .ctrl {
-  text-align: right;
+  text-align: center;
   padding: 0 30px;
+  margin-bottom: 60px;
   a {
     color: #007bff;
     font-size: 30px;
     text-decoration: none;
+    width: 100%;
+    display: block;
+    background: #deeaff;
+    line-height: 1em;
+    font-family: helvetica;
+    height: 35px;
+    border: 1px solid #817aff;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
   }
 }
