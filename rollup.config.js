@@ -2,7 +2,7 @@ import babel from 'rollup-plugin-babel';
 import node from 'rollup-plugin-node-resolve';
 
 const src = 'src/';
-const dist = 'dist';
+const dist = 'dest';
 
 const plugins = [node(), babel()];
 
