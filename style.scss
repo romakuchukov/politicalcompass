@@ -17,18 +17,19 @@ body {
 }
 
 div {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
   padding: 30px;
+  &:last-of-type { padding-top: 0; }
   &#copy {
-    max-height: 0px;
-    overflow: hidden;
-    padding-bottom: 0;
-    transition: max-height 0.8s cubic-bezier(0, 1, 0, 1) -0.1s;
-    &:target {
-      max-height: 9999px;
-      transition-delay: 0s;
-      transition-timing-function: cubic-bezier(0.5, 0, 1, 0);
+    overflow:hidden;
+    height:0;
+    transition: all .5s ease;
+    padding: 0;
+    &.active {
+      height:auto;
+      padding: 30px;
+      padding-bottom: 0;
     }
   }
 
@@ -41,15 +42,21 @@ svg {
 
 p {
   font-family: BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: #2656ff;
+  color: #007bff;
   font-weight: 500;
-  line-height: 1.2;
-  font-size: 3rem;
+  line-height: 1em;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  &:last-of-type { margin:0; }
   b { font-weight: bolder; }
 }
 
-.controls {
+.ctrl {
   text-align: right;
   padding: 0 30px;
-  a { text-decoration: none; }
+  a {
+    color: #007bff;
+    font-size: 30px;
+    text-decoration: none;
+  }
 }

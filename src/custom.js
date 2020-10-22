@@ -63,7 +63,13 @@ d3.select('svg').on('click', e => {
     .attr('transform', `translate(${e.x/ratio - x/ratio}, ${e.y/ratio - y/ratio})`)
 });
 
-d3.select('.controls a').on('click', e => {
-  //$header.text(() => $content.is(':visible') ? 'Collapse' : 'Expand');
-  console.log(0)
+document.querySelector('a').addEventListener('click', e => {
+
+  const ctrl = document.querySelector('.ctrl a');
+
+  ctrl.innerHTML = /\+/.test(ctrl.innerHTML) ? '--' : '+';
+
+  document.querySelector('#copy').classList.toggle('active');
+
+  e.preventDefault();
 });
