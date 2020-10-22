@@ -9,7 +9,7 @@
   "scripts": {
     "start": "rollup -c prod.rollup.config.js",
     "scss": "sass --watch style.scss:dist/style.css",
-    "build": "rollup -c prod.rollup.config.js & sass --style compressed --no-source-map scss/style.scss dest/style.css",
+    "build": "gem install sass",
     "watch": "rollup -c -w",
     "sync": "browser-sync --serveStatic . --files dist -w",
     "php": "php -S localhost:8000",
