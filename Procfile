@@ -1,2 +1,2 @@
-web: mv style.css dist/ & node server.js
+web: node server.js
 build: npm run build
