@@ -62,3 +62,8 @@ d3.select('svg').on('click', e => {
     .attr('stroke-width', .1)
     .attr('transform', `translate(${e.x/ratio - x/ratio}, ${e.y/ratio - y/ratio})`)
 });
+
+d3.select('.controls a').on('click', e => {
+  //$header.text(() => $content.is(':visible') ? 'Collapse' : 'Expand');
+  console.log(0)
+});

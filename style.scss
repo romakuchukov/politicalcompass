@@ -1,3 +1,5 @@
+//@use "basic";
+
 * {
   padding: 0;
   margin: 0;
@@ -18,9 +20,36 @@ div {
   max-width: 1200px;
   margin: auto;
   padding: 30px;
+  &#copy {
+    max-height: 0px;
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: max-height 0.8s cubic-bezier(0, 1, 0, 1) -0.1s;
+    &:target {
+      max-height: 9999px;
+      transition-delay: 0s;
+      transition-timing-function: cubic-bezier(0.5, 0, 1, 0);
+    }
+  }
+
 }
 
 svg {
   display: block;
   overflow: visible;
+}
+
+p {
+  font-family: BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #2656ff;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 3rem;
+  b { font-weight: bolder; }
+}
+
+.controls {
+  text-align: right;
+  padding: 0 30px;
+  a { text-decoration: none; }
 }
