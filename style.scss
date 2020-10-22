@@ -1,4 +1,4 @@
-//@use "basic";
+@use 'breakpoints' as bp;
 
 * {
   padding: 0;
@@ -31,9 +31,36 @@ div {
       padding: 30px;
       background: #deeaff;
       box-sizing: border-box;
+      @include bp.desktop {
+        margin: 0 30px 0 30px;
+      }
     }
   }
 
+}
+
+.ctrl {
+  text-align: center;
+  margin: 0 auto 60px auto;
+  padding: 0;
+  background: #deeaff;
+  @include bp.desktop {
+    margin: 0 30px 60px 30px;
+  }
+  a {
+    color: #007bff;
+    font-size: 30px;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    line-height: 1em;
+    font-family: helvetica;
+    height: 35px;
+    border: 1px solid #817aff;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
 }
 
 svg {
@@ -51,25 +78,4 @@ p {
   font-family: BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
   &:last-of-type { margin:0; }
   b { font-weight: bolder; }
-}
-
-.ctrl {
-  text-align: center;
-  padding: 0 30px;
-  margin-bottom: 60px;
-  a {
-    color: #007bff;
-    font-size: 30px;
-    text-decoration: none;
-    width: 100%;
-    display: block;
-    background: #deeaff;
-    line-height: 1em;
-    font-family: helvetica;
-    height: 35px;
-    border: 1px solid #817aff;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-  }
 }
