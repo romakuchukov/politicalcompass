@@ -36,30 +36,28 @@ div {
       }
     }
   }
-
-}
-
-.ctrl {
-  text-align: center;
-  margin: 0 auto 60px auto;
-  padding: 0;
-  background: #deeaff;
-  @include desktop {
-    margin: 0 30px 60px 30px;
-  }
-  a {
-    color: #007bff;
-    font-size: 30px;
-    text-decoration: none;
-    width: 100%;
-    display: block;
-    line-height: 1em;
-    font-family: helvetica;
-    height: 35px;
-    border: 1px solid #817aff;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
+  &.ctrl {
+    text-align: center;
+    margin: 0 auto 60px auto;
+    padding: 0;
+    background: #deeaff;
+    @include desktop {
+      margin: 0 30px 60px 30px;
+    }
+    a {
+      color: #007bff;
+      font-size: 30px;
+      text-decoration: none;
+      width: 100%;
+      display: block;
+      line-height: 1em;
+      font-family: helvetica;
+      height: 35px;
+      border: 1px solid #817aff;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+    }
   }
 }
 
