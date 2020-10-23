@@ -1,3 +1,5 @@
+import * as d3 from './index';
+
 const svgHeight = 100;
 const svgWidth  = 100;
 

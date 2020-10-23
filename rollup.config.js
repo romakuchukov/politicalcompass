@@ -13,15 +13,6 @@ const onwarn = (warning, warn) => {
 
 export default [{
   onwarn: onwarn,
-  input: `${src}index.js`,
-  output: {
-    name: 'd3',
-    dir: dist,
-    format: 'umd',
-    entryFileNames: 'd3.min.js'
-  },
-  plugins
-}, {
   input: `${src}custom.js`,
   output: {
     name: 'Main',
